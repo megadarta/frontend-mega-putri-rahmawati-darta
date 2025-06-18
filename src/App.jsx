@@ -22,24 +22,21 @@ function App() {
 
 
   useEffect(() => {
-    try {
-      api.get(`/negaras`)
-        .then((data) => {
-          const options = data.data.filter((item) => (dataValid(item.nama_negara) && item.nama_negara != "string"))
-            .map((item) => (
-              {
-                label: item.kode_negara + ' - ' + item.nama_negara,
-                value: item.id_negara
-              }
-            ))
-          setListNegara(options)
-          setLoadingNegara(false)
-        })
-    }
-    catch {
-      setLoadingNegara(false)
-    }
-
+    api.get(`/negaras`)
+      .then((data) => {
+        const options = data.data.filter((item) => (dataValid(item.nama_negara) && item.nama_negara != "string"))
+          .map((item) => (
+            {
+              label: item.kode_negara + ' - ' + item.nama_negara,
+              value: item.id_negara
+            }
+          ))
+        setListNegara(options)
+        setLoadingNegara(false)
+      }).catch((err) => {
+        message.error('Error Get Data')
+        setLoadingNegara(false)
+      })
   }, [])
 
   useEffect(() => {
