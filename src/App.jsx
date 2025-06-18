@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { Button, Col, Divider, Form, Input, InputNumber, Layout, message, Row, Select, Spin } from 'antd'
 import axios from 'axios'
-import { Url } from '../config'
 import { dataValid, formatterDiskon, formatterRupiah, inputNumberProps, parserDiskon, parserRupiah, selectCommonProps } from './utils/formatUtils'
 const { TextArea } = Input;
 
