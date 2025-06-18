@@ -7,6 +7,10 @@ import { dataValid, formatterDiskon, formatterRupiah, inputNumberProps, parserDi
 const { TextArea } = Input;
 
 function App() {
+  const api = axios.create({
+    baseURL: import.meta.env.VITE_API_URL,
+  });
+
   const [form] = Form.useForm();
   const [loadingNegara, setLoadingNegara] = useState(true)
   const [listNegara, setListNegara] = useState([])
@@ -18,7 +22,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.get(`${Url}/negaras`)
+    api.get(`/negaras`)
       .then((data) => {
         const options = data.data.filter((item) => (dataValid(item.nama_negara) && item.nama_negara != "string"))
           .map((item) => (
@@ -60,7 +64,7 @@ function App() {
     resetData('pelabuhan')
     const filter = JSON.stringify({ where: { id_negara: idNegara } });
 
-    axios.get(`${Url}/pelabuhans`, { params: { filter } })
+    api.get(`/pelabuhans`, { params: { filter } })
       .then((data) => {
         const options = data.data.map((item) => (
           {
@@ -76,7 +80,7 @@ function App() {
     resetData('barang')
     const filter = JSON.stringify({ where: { id_pelabuhan: idPelabuhan } });
 
-    axios.get(`${Url}/barangs`, { params: { filter } })
+    api.get(`/barangs`, { params: { filter } })
       .then((data) => {
         const options = data.data.map((item) => (
           {
