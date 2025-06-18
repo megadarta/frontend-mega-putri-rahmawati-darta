@@ -2,7 +2,7 @@
 SOAL TEST FRONTEND DEVELOPER
 
 📦 Tech Stack
-1. React.js (via Vite or CRA)
+1. React.js (Vite)
 2. Ant Design (antd)
 3. Axios
 4. JavaScript / JSX
