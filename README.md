@@ -12,4 +12,4 @@ How to run :
 2. npm install
 3. npm run dev
 
-Or in Browser : https://frontend-mega-putri-rahmawati-darta.vercel.app/
+Or in Browser : https://frontend-mega-putri-rahmawati-darta.vercel.app/ (API cannot access in server)

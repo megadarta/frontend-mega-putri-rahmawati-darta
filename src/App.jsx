@@ -98,14 +98,13 @@ function App() {
     let diskon = +form.getFieldValue('diskon')
     let harga = +form.getFieldValue('harga')
 
-    console.log(diskon)
-    console.log(harga)
     const total = harga - (harga * diskon / 100)
     form.setFieldsValue({ total: total.toFixed(2) })
   }
 
 
   const handleSubmit = () => {
+    form.setFieldsValue({diskon: null, harga: null})
     form.resetFields();
     message.success('Order diproses')
   }
@@ -211,7 +210,6 @@ function App() {
                   formatter={formatterDiskon}
                   parser={parserDiskon}
                   disabled={!selectedBarang}
-                  defaultValue={selectedBarang?.diskon}
                   placeholder='Masukkan diskon'
                   suffix="%"
                   onChange={(value) => calculateTotal(value, 'diskon')}
@@ -231,7 +229,6 @@ function App() {
               >
                 <InputNumber
                   disabled={!selectedBarang}
-                  defaultValue={selectedBarang?.harga}
                   placeholder='Masukkan harga'
                   onChange={(value) => calculateTotal(value, 'harga')}
                   {...inputNumberProps}
