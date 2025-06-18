@@ -69,6 +69,7 @@
 
 .form-data{
   padding: 30px!important;
+  min-height: 90vh;
 }
 
 .w-100{
