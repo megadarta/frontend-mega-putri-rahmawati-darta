@@ -86,7 +86,7 @@ function App() {
       .then((data) => {
         const options = data.data.map((item) => (
           {
-            label: item.nama_barang,
+            label: item.id_barang + ' - ' +  item.nama_barang,
             value: item.id_barang,
             detail: item
           }
