@@ -22,18 +22,24 @@ function App() {
 
 
   useEffect(() => {
-    api.get(`/negaras`)
-      .then((data) => {
-        const options = data.data.filter((item) => (dataValid(item.nama_negara) && item.nama_negara != "string"))
-          .map((item) => (
-            {
-              label: item.kode_negara + ' - ' + item.nama_negara,
-              value: item.id_negara
-            }
-          ))
-        setListNegara(options)
-        setLoadingNegara(false)
-      })
+    try {
+      api.get(`/negaras`)
+        .then((data) => {
+          const options = data.data.filter((item) => (dataValid(item.nama_negara) && item.nama_negara != "string"))
+            .map((item) => (
+              {
+                label: item.kode_negara + ' - ' + item.nama_negara,
+                value: item.id_negara
+              }
+            ))
+          setListNegara(options)
+          setLoadingNegara(false)
+        })
+    }
+    catch {
+      setLoadingNegara(false)
+    }
+
   }, [])
 
   useEffect(() => {
@@ -104,7 +110,7 @@ function App() {
 
 
   const handleSubmit = () => {
-    form.setFieldsValue({diskon: null, harga: null})
+    form.setFieldsValue({ diskon: null, harga: null })
     form.resetFields();
     message.success('Order diproses')
   }
